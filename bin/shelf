@@ -1,0 +1,13 @@
+#!/usr/bin/env php
+<?php // @codingStandardsIgnoreFile
+
+use Symfony\Component\Console\Application;
+use Devcommits\Shelf\Api\ShelfApplicationInterface as AppInterface;
+
+$serviceManager = include __DIR__ . '/../app/bootstrap.php';
+
+/**
+ * @var Application $console
+ */
+$console = $serviceManager->get(AppInterface::SHELF_APPLICATION_KEY);
+$console->run();

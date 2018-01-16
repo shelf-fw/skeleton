@@ -1,0 +1,26 @@
+{
+    "name": "devcommits/shelf",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Rafael Ortega Bueno",
+            "email": "rorteg@gmail.com"
+        }
+    ],
+    "require": {
+        "wikimedia/composer-merge-plugin": "*@dev"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5.7"
+    },
+    "bin": [
+        "bin/shelf"
+    ],
+    "extra": {
+        "merge-plugin": {
+            "include": [
+                "app/code/*/*/composer.json"
+            ]
+        }
+    }
+}
