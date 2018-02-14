@@ -2,12 +2,12 @@
 <?php // @codingStandardsIgnoreFile
 
 use Symfony\Component\Console\Application;
-use Devcommits\Shelf\Api\ShelfApplicationInterface as AppInterface;
+use Shelf\Console\Api\ShelfConsoleInterface;
 
-$serviceManager = include __DIR__ . '/../app/bootstrap.php';
+$serviceManager = include __DIR__ . '/../app/container.php';
 
 /**
  * @var Application $console
  */
-$console = $serviceManager->get(AppInterface::SHELF_APPLICATION_KEY);
+$console = $serviceManager->get(ShelfConsoleInterface::SHELF_APPLICATION_KEY);
 $console->run();

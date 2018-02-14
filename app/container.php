@@ -1,7 +1,9 @@
 <?php
 
-use Zend\Config\Factory;
+use Shelf\Config\ConfigFactoryAdapter as ShelfConfigFactory;
 use Zend\ServiceManager\ServiceManager;
+
+const BP = __DIR__ . '/../';
 
 // Setup/verify autoloading
 if (file_exists($a = __DIR__ . '/../../../autoload.php')) {
@@ -14,13 +16,11 @@ if (file_exists($a = __DIR__ . '/../../../autoload.php')) {
     fwrite(STDERR, 'Cannot locate autoloader; please run "composer install"' . PHP_EOL);
     exit(1);
 }
-// Modules Settings
-$modulesConfig = Factory::fromFiles(glob('app/code/*/*/etc/*.*'), true);
-// Global Settings
-$globalConfig = Factory::fromFiles(glob('app/etc/*.*'), true);
-$configMerged = $modulesConfig->merge($globalConfig)->toArray();
+
+$config = ShelfConfigFactory::getConfig()->toArray();
+
 $serviceManager = new ServiceManager();
-$serviceManager->configure($configMerged['dependencies']);
-$serviceManager->setService('config', $configMerged);
+$serviceManager->configure($config['dependencies']);
+$serviceManager->setService('config', $config);
 
 return $serviceManager;
