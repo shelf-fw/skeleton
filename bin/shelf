@@ -4,7 +4,7 @@
 use Symfony\Component\Console\Application;
 use Shelf\Console\Api\ShelfConsoleInterface;
 
-$serviceManager = include __DIR__ . '/../app/container.php';
+$serviceManager = include __DIR__ . '/../app/bootstrap.php';
 
 /**
  * @var Application $console
