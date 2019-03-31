@@ -34,7 +34,11 @@ if (file_exists($a = __DIR__ . '/../../../autoload.php')) {
 $config = ShelfConfigFactory::getConfig()->toArray();
 
 $serviceManager = new ServiceManager();
-$serviceManager->configure($config['dependencies']);
+
+if (isset($config['dependencies'])) {
+    $serviceManager->configure($config['dependencies']);
+}
+
 $serviceManager->setService('config', $config);
 
 return $serviceManager;
