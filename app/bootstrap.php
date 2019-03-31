@@ -31,7 +31,8 @@ if (file_exists($a = __DIR__ . '/../../../autoload.php')) {
     exit(1);
 }
 
-$config = ShelfConfigFactory::getConfig()->toArray();
+$config = ShelfConfigFactory::getConfig();
+$config = is_array($config) ? $config : $config->toArray();
 
 $serviceManager = new ServiceManager();
 
